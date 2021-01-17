@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "9f854b39-d45a-4c5b-bc61-a4e99aea83a2",
+		"name": "web",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "【后台】获取文章列表",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjA5OGY2YmNkNDYyMWQzNzNjYWRlNGU4MzI2MjdiNGY2IiwicGFzc3dvcmQiOiJjYzAzZTc0N2E2YWZiYmNiZjhiZTc2NjhhY2ZlYmVlNSIsImV4cCI6MTYwOTc0MDgwOCwiaXNzIjoiZ2luLWJsb2cifQ.7Pc_Khh-P1mC5Zv5UcPWbHDEXFq0CLuVEoipYxDCJ8g",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{PRE}}/admin/articles?pageIndex=0&pageSize=10",
+					"host": [
+						"{{PRE}}"
+					],
+					"path": [
+						"admin",
+						"articles"
+					],
+					"query": [
+						{
+							"key": "pageIndex",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						}
+					]
+				},
+				"description": "【后台】 获取文章列表"
+			},
+			"response": []
+		},
+		{
+			"name": "【后台】提交文章",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"content\": \"content3\",\n    \"videos\": \"video link\",\n    \"tags\": [\n        {\n            \"tagname\": \"toy13\"\n        },\n        {\n            \"tagname\": \"toy23\"\n        }\n    ]\n}\n    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{PRE}}/admin/articles",
+					"host": [
+						"{{PRE}}"
+					],
+					"path": [
+						"admin",
+						"articles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "【后台】获取单一文章详情",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{PRE}}/admin/articles/1",
+					"host": [
+						"{{PRE}}"
+					],
+					"path": [
+						"admin",
+						"articles",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "【后台】单一文章更新",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"content\": \"content11\",\n    \"videos\": \"video link\",\n    \"tags\": [\n        {\n            \"tagname\": \"toy11\"\n        },\n        {\n            \"tagname\": \"toy11\"\n        }\n    ]\n}\n    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{PRE}}/admin/articles/1",
+					"host": [
+						"{{PRE}}"
+					],
+					"path": [
+						"admin",
+						"articles",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
