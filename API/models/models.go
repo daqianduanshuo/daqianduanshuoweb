@@ -36,7 +36,7 @@ func Setup() {
 	if err != nil {
 		panic("failed to connect database")
 	}
-	DB.LogMode(true)
+
 }
 
 // CloseDB db

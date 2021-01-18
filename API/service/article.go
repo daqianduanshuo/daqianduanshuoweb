@@ -7,7 +7,7 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-// GetArticles 获取文章列表
+// GetArticles 获取文章总数
 func GetArticles(pageNum int, pageSize int) ([]*models.Article, error) {
 	var articles []*models.Article
 	err := models.DB.Offset(pageNum * pageSize).Limit(pageSize).Preload("Tags").Find(&articles).Error

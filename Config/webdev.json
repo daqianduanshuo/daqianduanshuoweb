@@ -93,7 +93,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"content\": \"content11\",\n    \"videos\": \"video link\",\n    \"tags\": [\n        {\n            \"tagname\": \"toy11\"\n        },\n        {\n            \"tagname\": \"toy11\"\n        }\n    ]\n}\n    ",
+					"raw": "{\n    \"content\": \"content22\",\n    \"videos\": \"video link\",\n    \"tags\": [\n        {\n            \"tagname\": \"toy22\"\n        },\n        {\n            \"tagname\": \"toy22\"\n        }\n    ]\n}\n    ",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -101,12 +101,59 @@
 					}
 				},
 				"url": {
-					"raw": "{{PRE}}/admin/articles/1",
+					"raw": "{{PRE}}/admin/articles/2",
 					"host": [
 						"{{PRE}}"
 					],
 					"path": [
 						"admin",
+						"articles",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "【前台】获取文章列表",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{PRE}}/api/articles?pageIndex=1&pageSize=10",
+					"host": [
+						"{{PRE}}"
+					],
+					"path": [
+						"api",
+						"articles"
+					],
+					"query": [
+						{
+							"key": "pageIndex",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "【前台】获取单一文章详情 ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{PRE}}/api/articles/1",
+					"host": [
+						"{{PRE}}"
+					],
+					"path": [
+						"api",
 						"articles",
 						"1"
 					]

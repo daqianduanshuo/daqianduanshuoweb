@@ -2,12 +2,17 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
+
+	_ "API/docs"
+
+	ginSwagger "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
 // InitRouter 初始化路由
 func InitRouter() {
 	r := gin.Default()
-
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	admin := r.Group("/admin")
 	{
 		admin.GET("/articles", GetArticles)            //获取文章列表
