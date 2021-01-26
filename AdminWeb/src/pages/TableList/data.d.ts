@@ -1,36 +1,22 @@
 export type TableListItem = {
-  key: number;
-  disabled?: boolean;
-  href: string;
-  avatar: string;
-  name: string;
-  owner: string;
-  desc: string;
-  callNo: number;
-  status: number;
-  updatedAt: Date;
-  createdAt: Date;
-  progress: number;
+  title: string;
+  create_at: Date;
 };
 
 export type TableListPagination = {
   total: number;
   pageSize: number;
-  current: number;
+  pageIndex: number;
 };
 
 export type TableListData = {
-  list: TableListItem[];
+  lists: TableListItem[];
   pagination: Partial<TableListPagination>;
 };
 
+
 export type TableListParams = {
-  status?: string;
-  name?: string;
-  desc?: string;
-  key?: number;
+  title?: string;
   pageSize?: number;
-  currentPage?: number;
-  filter?: Record<string, any[]>;
-  sorter?: Record<string, any>;
+  pageIndex?: number;
 };
