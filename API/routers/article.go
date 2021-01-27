@@ -24,7 +24,7 @@ func GetArticles(c *gin.Context) {
 	pageIndex, _ := strconv.Atoi(c.Query("pageIndex"))
 	pageSize, _ := strconv.Atoi(c.Query("pageSize"))
 
-	articles, _ := service.GetArticles(pageIndex, pageSize)
+	articles, _ := service.GetArticles(pageIndex-1, pageSize)
 	total, err := service.GetCount()
 	if err != nil {
 		appG.Response(http.StatusBadRequest, 400, err.Error())
@@ -34,7 +34,7 @@ func GetArticles(c *gin.Context) {
 	data := make(map[string]interface{})
 	data["lists"] = articles
 	data["total"] = total
-	data["pageIndex"] = pageIndex
+	data["pageIndex"] = pageIndex - 1
 	data["pageSize"] = pageSize
 
 	appG.Response(http.StatusOK, 200, data)
