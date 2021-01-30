@@ -9,7 +9,7 @@ import (
 
 // OwnModel Model
 type OwnModel struct {
-	ID        uint      `gorm:"primary_key" json:"-"`
+	ID        uint      `gorm:"primary_key" json:"id"`
 	CreatedAt time.Time `json:"create_at"`
 	UpdatedAt time.Time `json:"-"`
 	DeletedAt time.Time `json:"-"`

@@ -34,7 +34,7 @@ func GetArticles(c *gin.Context) {
 	data := make(map[string]interface{})
 	data["lists"] = articles
 	data["total"] = total
-	data["pageIndex"] = pageIndex - 1
+	data["pageIndex"] = pageIndex
 	data["pageSize"] = pageSize
 
 	appG.Response(http.StatusOK, 200, data)

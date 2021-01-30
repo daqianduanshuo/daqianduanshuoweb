@@ -10,7 +10,7 @@ import (
 // GetArticles 获取文章总数
 func GetArticles(pageNum int, pageSize int) ([]*models.Article, error) {
 	var articles []*models.Article
-	err := models.DB.Offset(pageNum * pageSize).Limit(pageSize).Preload("Tags").Find(&articles).Error
+	err := models.DB.Offset(pageNum * pageSize).Limit(pageSize).Order(" id desc ").Preload("Tags").Find(&articles).Error
 	if err != nil && err != gorm.ErrRecordNotFound {
 		return nil, err
 	}
