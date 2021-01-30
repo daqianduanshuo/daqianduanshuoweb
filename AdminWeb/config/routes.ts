@@ -18,12 +18,16 @@
   {
     name: '文章管理',
     icon: 'table',
-    path: '/list',
-    component: './TableList',
+    path: '/article',
+    component: './ArticleList',
+  },
+  {
+    path: '/article/detail',
+    component: './ArticleDetail'
   },
   {
     path: '/',
-    redirect: '/list',
+    redirect: '/article',
   },
   {
     component: './404',
