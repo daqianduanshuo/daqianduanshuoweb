@@ -15,7 +15,7 @@ const ArticleDetail: React.FC = (props) => {
     const [form] = Form.useForm()
     const [tags, setTags] = useState([]) 
     const tagRef = useRef(null)
-    const [content, setContent] = useState('');
+    const [content, setContent] = useState("")
 
     const queryArticleByIDCallback = useCallback(async () => {
         if(props.location.query.id){
@@ -64,10 +64,13 @@ const ArticleDetail: React.FC = (props) => {
         let params = {"title":values.title,"videos":JSON.stringify(videos),"tags":tags,"content":content}
         if(id){
             await updateArticle(id,params)
-            message.success('编辑成功');
+            message.success('编辑成功')
         }else{
             await createArticle(params)
-            message.success('添加成功');
+            message.success('添加成功')
+            form.resetFields()
+            setTags([])
+            setContent("")
         }
     }
 
