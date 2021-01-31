@@ -1,9 +1,9 @@
 import React,{useState,useEffect,useCallback,useRef} from 'react';
 import { history } from 'umi';
-import { Form, Input, Button, Tag } from 'antd';
+import { Form, Input, Button, Tag, message } from 'antd';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { queryArticleByID} from './service';
+import { queryArticleByID,createArticle,updateArticle} from './service';
 
 const layout = {
     labelCol: { span: 2 },
@@ -25,19 +25,24 @@ const ArticleDetail: React.FC = (props) => {
     }, [props.location.query.id])
 
     const updateForm = (data:any) => {
+        let videos = JSON.parse(data.videos)
         form.setFieldsValue({
-            title: data.title
+            title: data.title,
+            zhihu: decodeURIComponent(videos.zhihu),
+            xigua: decodeURIComponent(videos.xigua),
+            bilibili: decodeURIComponent(videos.bilibili),
         })
+        setContent(data.content)
         setTags(data.tags)
     }
 
     const handleCloseTag = (index:number) =>{
         let tagsCopy = [...tags];
         tagsCopy.splice(index, 1)
-        console.log('tags',tagsCopy)
         setTags(tagsCopy)
     }
-    const handleEditInputConfirm = () =>{
+    const handleEditInputConfirm = (e) =>{
+        e.preventDefault()
         let tagsCopy = [...tags];
         tagsCopy.push({"tagname":tagRef.current.state.value})
         setTags(tagsCopy)
@@ -49,9 +54,32 @@ const ArticleDetail: React.FC = (props) => {
     }, [queryArticleByIDCallback])
     
     
-    const onFinish = (values: any) => {
-        console.log(values,tags,content);
-    };
+    const onFinish = async (values: any) => {
+        let id = props.location.query.id
+        
+        let videos = {  "zhihu":encodeURIComponent(values.zhihu),
+                        "xigua":encodeURIComponent(values.xigua),
+                        "bilibili":encodeURIComponent(values.bilibili)
+                        }
+        let params = {"title":values.title,"videos":JSON.stringify(videos),"tags":tags,"content":content}
+        if(id){
+            await updateArticle(id,params)
+            message.success('编辑成功');
+        }else{
+            await createArticle(params)
+            message.success('添加成功');
+        }
+    }
+
+    const modules = {
+        toolbar: [
+            [{ 'header': [1, 2, false] }],
+            ['bold',  'blockquote'],
+            [{'list': 'ordered'}, {'list': 'bullet'}],
+            ['link'],
+            ['code-block']
+        ]
+    }
     
     return (
         <div>
@@ -74,8 +102,8 @@ const ArticleDetail: React.FC = (props) => {
                     <Input />
                 </Form.Item>
 
-                <Form.Item label="内容概要"  >
-                    <ReactQuill theme="snow" value={content} onChange={setContent}/>
+                <Form.Item label="内容概要">
+                    <ReactQuill theme="snow" modules={modules} value={content} onChange={setContent}/>
                 </Form.Item>
                 
                 <Form.Item label="标签" >

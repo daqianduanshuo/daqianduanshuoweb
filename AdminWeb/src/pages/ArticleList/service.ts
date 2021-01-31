@@ -11,13 +11,3 @@ export async function queryArticles(params?: Params) {
     params,
   });
 }
-
-export async function addArticle(params:any) {
-  return request('/admin/articles', {
-    method: 'POST',
-    data: {
-      ...params,
-      method: 'post',
-    },
-  });
-}
