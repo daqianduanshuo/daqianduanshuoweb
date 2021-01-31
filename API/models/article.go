@@ -9,10 +9,10 @@ import (
 
 // OwnModel Model
 type OwnModel struct {
-	ID        uint      `gorm:"primary_key" json:"id"`
-	CreatedAt time.Time `json:"create_at"`
-	UpdatedAt time.Time `json:"-"`
-	DeletedAt time.Time `json:"-"`
+	ID        uint       `gorm:"primary_key" json:"id"`
+	CreatedAt time.Time  `json:"create_at"`
+	UpdatedAt time.Time  `json:"-"`
+	DeletedAt *time.Time `type:timestamp; default: NOW(); json:"-"`
 }
 
 // Article Model

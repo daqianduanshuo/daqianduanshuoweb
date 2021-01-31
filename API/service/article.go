@@ -34,7 +34,7 @@ func CreateArticle(c *gin.Context) (string, error) {
 	if err := c.ShouldBindJSON(&json); err != nil {
 		return "", err
 	}
-	article := models.Article{Content: json.Content, Videos: json.Videos, Tags: json.Tags}
+	article := models.Article{Title: json.Title, Content: json.Content, Videos: json.Videos, Tags: json.Tags}
 	models.DB.Create(&article)
 	return "success", nil
 }
