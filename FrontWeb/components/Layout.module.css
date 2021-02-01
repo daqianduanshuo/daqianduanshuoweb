@@ -1,0 +1,36 @@
+.mainheader{
+    background: #fff;
+    border-bottom: 1px solid #f1f1f1;
+    color: #909090;
+    height: 6rem;
+    z-index: 1;
+    display: flex;
+    position:fixed;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+}
+.flexr{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.logo{
+    width: 4rem;
+    height: 4rem;
+    margin-left: 1rem;
+    display: inline-block
+}
+.videolink{
+    margin-left: 2rem;
+    font-size: 1.5rem;
+}
+.flexc{
+    padding-top: 6rem;
+    flex:1;
+    min-height: calc(100vh - 6rem);
+}
+.footer{
+    height: 6rem;
+}
