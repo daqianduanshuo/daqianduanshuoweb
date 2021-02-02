@@ -22,6 +22,9 @@
     margin-left: 1rem;
     display: inline-block
 }
+.logo:hover{
+    cursor: pointer;
+}
 .videolink{
     margin-left: 2rem;
     font-size: 1.5rem;
@@ -29,8 +32,22 @@
 .flexc{
     padding-top: 6rem;
     flex:1;
-    min-height: calc(100vh - 6rem);
+    min-height: calc(100vh - 8rem);
 }
 .footer{
-    height: 6rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+.footer .info p{
+    margin-bottom: 1rem;
+}
+.footer .social{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer .social img{
+    width: 2rem;
+    height: 2rem;
+    margin-left: 1rem;
 }
