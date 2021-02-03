@@ -25,6 +25,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color: var(--backgroundColor);
 }
 ol, ul {
 	list-style: none;
@@ -44,7 +45,6 @@ table {
 a{
 	text-decoration: none;
 }
-
 html {
 	font-size:62.5% !important;
 	background-color: var(--backgroundColor);

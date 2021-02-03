@@ -32,11 +32,12 @@
 .flexc{
     padding-top: 6rem;
     flex:1;
-    min-height: calc(100vh - 8rem);
+    min-height: calc(100vh - 10rem);
 }
 .footer{
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 .footer .info p{
     margin-bottom: 1rem;

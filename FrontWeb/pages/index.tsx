@@ -1,10 +1,9 @@
-import Link from 'next/link'
 import Layout from '../components/Layout'
+import ArticelList from './articles/index'
 
 const IndexPage = () => (
   <Layout >
-    <h1>hello</h1>
+    <ArticelList/>
   </Layout>
 )
-
 export default IndexPage

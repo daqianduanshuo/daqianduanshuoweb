@@ -2,12 +2,7 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import Layout from '../../components/Layout'
 
 
-type Props = {
-  item?: User
-  errors?: string
-}
-
-const StaticPropsDetail = ({ item, errors }: Props) => {
+const ArticelDetail = ({ item, errors }: Props) => {
   if (errors) {
     return (
       <Layout title="Error | Next.js + TypeScript Example">
@@ -29,7 +24,7 @@ const StaticPropsDetail = ({ item, errors }: Props) => {
   )
 }
 
-export default StaticPropsDetail
+export default ArticelDetail
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on users

@@ -1,0 +1,23 @@
+.cellwrap{
+    margin: 1rem 0;
+    background-color: #fff;
+}
+.cellwrap .pagination{
+    padding: 3rem;
+}
+.cell{
+    padding: 3rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+.cell:hover{
+    cursor: pointer;
+}
+.cell p{
+    color: #333;
+    font-weight: 700;
+    font-size: 2rem;
+}
+.cell span{
+    display: inline-block;
+    margin-top: 1rem;
+}
