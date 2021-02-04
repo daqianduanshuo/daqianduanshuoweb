@@ -46,7 +46,7 @@ a{
 	text-decoration: none;
 }
 html {
-	font-size:62.5% !important;
+	font-size:62.5%;
 	background-color: var(--backgroundColor);
 }
 

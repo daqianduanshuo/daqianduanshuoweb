@@ -17,6 +17,7 @@
     "dayjs": "1.8.28",
     "esm": "^3.2.25",
     "express": "^4.17.1",
+    "highlight.js": "^10.5.0",
     "http-proxy-middleware": "^1.0.6",
     "moment": "^2.29.1",
     "next": "latest",
