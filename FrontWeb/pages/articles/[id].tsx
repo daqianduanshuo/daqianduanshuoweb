@@ -23,15 +23,17 @@ const ArticelDetail = () => {
   
   useEffect(() => {
     const {id} = router.query
-    if(id != undefined){
+    if(id != undefined && id != ""){
       setArticledId(id)
     }
   }, [router])
 
   const getArticleById = useCallback(async () => {
-      const result = await queryArticleByID(articleid)
-      setData(result.data.data)
-      setValues(result.data.data)    
+      if(articleid != ""){
+        const result = await queryArticleByID(articleid)
+        setData(result.data.data)
+        setValues(result.data.data)   
+      }
   }, [articleid])
 
   const setValues = (data:any) => {
