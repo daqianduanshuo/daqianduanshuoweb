@@ -1,5 +1,5 @@
 
-import { queryArticles } from './service'
+import { queryArticles } from '../../api/articleapi'
 import React, { useState, useEffect,useCallback} from 'react'
 import Link from 'next/link'
 import { Pagination } from 'antd'

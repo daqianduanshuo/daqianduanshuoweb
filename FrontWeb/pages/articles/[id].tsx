@@ -1,7 +1,7 @@
 
 import Layout from '../../components/Layout'
 import  { useState, useEffect,useCallback,useRef} from 'react'
-import { queryArticleByID } from './service'
+import { queryArticleByID } from '../../api/articleapi'
 import { useRouter } from 'next/router'
 import style from './[id].module.css'
 import { Tag  } from 'antd'
@@ -14,9 +14,9 @@ hljs.registerLanguage('javascript', javascript);
 const ArticelDetail = () => {
 
   const router = useRouter()
-  const [articleid, setArticledId] = useState('')
+  const [articleid, setArticledId] = useState<any>(null);
   const [data, setData] = useState({title:''})
-  const [videos,setVideos] = useState({})
+  const [videos,setVideos] = useState({bilibili:'',xigua:'',zhihu:''})
   const [tags, setTags] = useState([])
   const [content, setContent] = useState("")
   const contentRef = useRef(null)
@@ -29,7 +29,7 @@ const ArticelDetail = () => {
   }, [router])
 
   const getArticleById = useCallback(async () => {
-      if(articleid != ""){
+      if(articleid != "" && articleid != null && articleid != undefined){
         const result = await queryArticleByID(articleid)
         setData(result.data.data)
         setValues(result.data.data)   

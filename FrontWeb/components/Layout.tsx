@@ -29,7 +29,7 @@ const Layout = ({ children, title = '大前端说 - 每天分享一篇技术文�
     </section>
     <footer className={["container", style.footer].join(' ')}>
       <div className={style.info}>
-        <p>Copyright ©2021 大前端说  浙ICP备14020137号</p>
+        <p>Copyright ©2021 大前端说  浙ICP备20004408号</p>
         <div className={style.social}>
           <span>联系我: </span>
           <a href="https://github.com/daqianduanshuo" target="_blank"><img src="/github.png" alt="github"/></a>
