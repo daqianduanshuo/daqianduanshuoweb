@@ -31,3 +31,8 @@ umi + dva + ant design + typescript + hook
 
 前端Web
 
+`yarn dev` 开发模式
+ 
+`yarn build` 打包
+
+`yarn start` 正式
