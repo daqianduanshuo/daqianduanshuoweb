@@ -19,12 +19,20 @@ func InitRouter() {
 		admin.POST("/articles", PostArticle)           //新增文章
 		admin.GET("/articles/:id", GetArticleByID)     //查看详情
 		admin.POST("/articles/:id", UpdateArticleByID) //修改详情
+
+		admin.GET("/roadmaps", GetRoadMaps)            //获取路线图列表
+		admin.POST("/roadmaps", PostRoadMaps)          //新增路线图
+		admin.GET("/roadmaps/:id", GetRoadMapByID)     //查看路线图详情
+		admin.POST("/roadmaps/:id", UpdateRoadMapByID) //修改路线图详情
+
 	}
 
 	api := r.Group("/api")
 	{
 		api.GET("/articles", GetArticles)        //获取文章列表
 		api.GET("/articles/:id", GetArticleByID) //查看详情
+
+		api.GET("/roadmaps", GetRoadMaps) //获取路线图列表
 	}
 
 	r.Run()
