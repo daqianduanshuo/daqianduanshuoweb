@@ -42,9 +42,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-a{
-	text-decoration: none;
-}
+
 html {
 	font-size:62.5%;
 	background-color: var(--backgroundColor);
@@ -60,4 +58,10 @@ html {
 .page{
 	display: flex;
 	flex-direction: column;
+}
+
+a{
+    color: #71777c;
+    font-size: 2rem;
+	text-decoration: none;
 }

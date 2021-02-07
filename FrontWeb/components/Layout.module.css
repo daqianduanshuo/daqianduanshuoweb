@@ -25,7 +25,7 @@
 .logo:hover{
     cursor: pointer;
 }
-.videolink{
+.link{
     margin-left: 2rem;
     font-size: 1.5rem;
 }
@@ -51,4 +51,8 @@
     width: 2rem;
     height: 2rem;
     margin-left: 1rem;
+}
+
+.active{
+    color: #007fff;
 }
