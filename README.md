@@ -19,7 +19,7 @@ http://127.0.0.1:8080/swagger/index.html#/
 
 后台管理系统
 
-umi + dva + ant design + typescript + hook
+umi + ant design + typescript + hook
 
 `yarn install` 安装依赖
 
@@ -31,3 +31,10 @@ umi + dva + ant design + typescript + hook
 
 前端Web
 
+next.js + ant design + typescript + hook
+
+`yarn dev` 开发模式
+ 
+`yarn build` 打包
+
+`yarn start` 正式
