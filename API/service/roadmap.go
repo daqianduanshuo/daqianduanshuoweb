@@ -11,9 +11,16 @@ import (
 // GetRoadMaps 获取路线图
 func GetRoadMaps(roadmaptype string) ([]*models.Roadmap, error) {
 	var roadmaps []*models.Roadmap
-	err := models.DB.Where("type = ?", roadmaptype).Find(&roadmaps).Error
-	if err != nil && err != gorm.ErrRecordNotFound {
-		return nil, err
+	if roadmaptype == "" {
+		err := models.DB.Find(&roadmaps).Error
+		if err != nil && err != gorm.ErrRecordNotFound {
+			return nil, err
+		}
+	} else {
+		err := models.DB.Where("type = ?", roadmaptype).Find(&roadmaps).Error
+		if err != nil && err != gorm.ErrRecordNotFound {
+			return nil, err
+		}
 	}
 	return roadmaps, nil
 }
