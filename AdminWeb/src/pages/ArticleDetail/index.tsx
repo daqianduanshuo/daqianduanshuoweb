@@ -1,9 +1,9 @@
 import React,{useState,useEffect,useCallback,useRef} from 'react';
 import { history } from 'umi';
 import { Form, Input, Button, Tag, message } from 'antd';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import E from 'wangeditor'
 import { queryArticleByID,createArticle,updateArticle} from './service';
+
 
 const layout = {
     labelCol: { span: 2 },
@@ -16,6 +16,7 @@ const ArticleDetail: React.FC = (props) => {
     const [tags, setTags] = useState([]) 
     const tagRef = useRef(null)
     const [content, setContent] = useState("")
+    let editor = new E("#editor")
 
     const queryArticleByIDCallback = useCallback(async () => {
         if(props.location.query.id){
@@ -33,6 +34,7 @@ const ArticleDetail: React.FC = (props) => {
             bilibili: decodeURIComponent(videos.bilibili),
         })
         setContent(data.content)
+        editor.txt.html(data.content) 
         setTags(data.tags)
     }
 
@@ -52,6 +54,16 @@ const ArticleDetail: React.FC = (props) => {
     useEffect(() => {
         queryArticleByIDCallback()
     }, [queryArticleByIDCallback])
+
+    useEffect(() => {
+        editor.config.onchange = (newHtml) => {
+            setContent(newHtml)
+        }
+        editor.create()
+        return () => {
+            editor.destroy()
+        }
+    }, [])
     
     
     const onFinish = async (values: any) => {
@@ -68,21 +80,13 @@ const ArticleDetail: React.FC = (props) => {
         }else{
             await createArticle(params)
             message.success('添加成功')
-            form.resetFields()
             setTags([])
+            editor.txt.clear()
             setContent("")
+            form.resetFields()
         }
     }
 
-    const modules = {
-        toolbar: [
-            [{ 'header': [1, 2, false] }],
-            ['bold',  'blockquote'],
-            [{'list': 'ordered'}, {'list': 'bullet'}],
-            ['link'],
-            ['code-block']
-        ]
-    }
     
     return (
         <div>
@@ -106,7 +110,7 @@ const ArticleDetail: React.FC = (props) => {
                 </Form.Item>
 
                 <Form.Item label="内容概要">
-                    <ReactQuill theme="snow" modules={modules} value={content} onChange={setContent}/>
+                    <div id="editor"></div>
                 </Form.Item>
                 
                 <Form.Item label="标签" >
