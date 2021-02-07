@@ -44,7 +44,7 @@ const ArticelList = () => {
           </div>
           )
       })}
-      <Pagination className={style.pagination} onChange={onChangePage} current={parseInt(pageIndex)} total={data.total} />
+      <Pagination className={style.pagination}  onChange={onChangePage} current={parseInt(pageIndex)} total={data.total} />
     </div>
   )
 }

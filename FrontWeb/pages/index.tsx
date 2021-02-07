@@ -2,7 +2,7 @@ import Layout from '../components/Layout'
 import ArticelList from './articles/index'
 
 const IndexPage = () => (
-  <Layout >
+  <Layout index="0">
     <ArticelList/>
   </Layout>
 )

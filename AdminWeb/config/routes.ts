@@ -26,6 +26,16 @@
     component: './ArticleDetail'
   },
   {
+    name: '路线图管理',
+    icon: 'table',
+    path: '/roadmap',
+    component: './RoadMapList',
+  },
+  {
+    path: '/roadmap/detail',
+    component: './RoadMapDetail'
+  },
+  {
     path: '/',
     redirect: '/article',
   },

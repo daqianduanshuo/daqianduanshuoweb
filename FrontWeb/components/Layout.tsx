@@ -3,13 +3,19 @@ import Link from 'next/link'
 import Head from 'next/head'
 import { Tooltip } from 'antd';
 import style from './Layout.module.css'
+import  { useState} from 'react'
 
 type Props = {
   children?: ReactNode
-  title?: string
+  title?: string,
+  index:string
 }
 
-const Layout = ({ children, title = '大前端说 - 每天分享一篇技术文章' }: Props) => (
+const Layout = ({ children, title = '大前端说 - 每天分享一篇技术文章',index }: Props) => {
+
+  const [curindex, setIndex] = useState(index)
+
+  return (
   <div className="page">
     <Head>
       <title>{title}</title>
@@ -20,7 +26,10 @@ const Layout = ({ children, title = '大前端说 - 每天分享一篇技术文�
       <div className={["container", style.flexr].join(' ')} >
         <img src="/logo.png" alt="logo" className={style.logo} />
         <nav>
-          <Link href="/"><a className={style.videolink}>视频</a></Link>
+          <Link href="/"><a className={[style.link,curindex == "0" ? style.active:null].join(' ')} onClick={() => {setIndex("0")}}>视频</a></Link>
+        </nav>
+        <nav>
+          <Link href="/roadmaps"><a className={[style.link,curindex == "1" ? style.active:null].join(' ')} onClick={() => {setIndex("1")}}>路线图</a></Link>
         </nav>
       </div>
     </header>
@@ -44,6 +53,7 @@ const Layout = ({ children, title = '大前端说 - 每天分享一篇技术文�
       </div>
     </footer>
   </div>
-)
+  )
+}
 
 export default Layout

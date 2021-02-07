@@ -66,7 +66,7 @@ const ArticelDetail = () => {
 
   return (
     
-    <Layout title={data.title}>
+    <Layout title={data.title} index="0">
       <div className={style.container}>
         <h1>{data.title}</h1> 
         <div className={style.videowrap}>
