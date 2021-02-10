@@ -1,7 +1,9 @@
-import React,{useState,useEffect,useCallback,useRef} from 'react';
+import React,{useState,useEffect,useCallback,useRef,useMemo} from 'react';
 import { history } from 'umi';
 import { Form, Input, Button, Tag, message } from 'antd';
-import E from 'wangeditor'
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
 import { queryArticleByID,createArticle,updateArticle} from './service';
 
 
@@ -15,8 +17,8 @@ const ArticleDetail: React.FC = (props) => {
     const [form] = Form.useForm()
     const [tags, setTags] = useState([]) 
     const tagRef = useRef(null)
+    const editorRef = useRef(null)
     const [content, setContent] = useState("")
-    let editor = new E("#editor")
 
     const queryArticleByIDCallback = useCallback(async () => {
         if(props.location.query.id){
@@ -34,7 +36,6 @@ const ArticleDetail: React.FC = (props) => {
             bilibili: decodeURIComponent(videos.bilibili),
         })
         setContent(data.content)
-        editor.txt.html(data.content) 
         setTags(data.tags)
     }
 
@@ -55,15 +56,31 @@ const ArticleDetail: React.FC = (props) => {
         queryArticleByIDCallback()
     }, [queryArticleByIDCallback])
 
-    useEffect(() => {
-        editor.config.onchange = (newHtml) => {
-            setContent(newHtml)
+    const imageHandler = () => {
+        console.log('ref',editorRef)
+        var editor = editorRef.current.getEditor();
+        var range = editorRef.current.getEditorSelection().index;
+        var value = prompt('What is the image URL');
+        editor.insertEmbed(range, 'image', value);
+    }
+
+    const modules = useMemo(() => ({
+        toolbar: {
+        container: [
+            [{ 'header': [1, 2, false] }],
+                    ['bold',  'blockquote'],
+                    [{'list': 'ordered'}, {'list': 'bullet'}],
+                    ['link','image'],
+                    ['code-block']
+        ],
+        handlers: {
+            image: imageHandler
+            }
         }
-        editor.create()
-        return () => {
-            editor.destroy()
-        }
-    }, [])
+    }), [])
+
+
+
     
     
     const onFinish = async (values: any) => {
@@ -81,7 +98,6 @@ const ArticleDetail: React.FC = (props) => {
             await createArticle(params)
             message.success('添加成功')
             setTags([])
-            editor.txt.clear()
             setContent("")
             form.resetFields()
         }
@@ -110,7 +126,7 @@ const ArticleDetail: React.FC = (props) => {
                 </Form.Item>
 
                 <Form.Item label="内容概要">
-                    <div id="editor"></div>
+                    <ReactQuill ref={editorRef} theme="snow" modules={modules} value={content} onChange={setContent}/>
                 </Form.Item>
                 
                 <Form.Item label="标签" >
